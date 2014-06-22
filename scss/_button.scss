@@ -1,0 +1,280 @@
+/**
+ * .button
+ * .button.blue
+ * .button.grey (or .button.gray)
+ * .button.large    // shadow style
+ * .button.medium   // shadow style
+ * .button.small
+ * .button.disabled
+ */
+.button {
+  & {
+    font-size: 12.8px;
+    cursor: pointer;
+    color: white !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+    width: auto;
+    text-align: center;
+    line-height: 100%;
+    @include border-radius( 2px );
+    background: $red;
+    @include user-select;
+    @include inline-block;
+
+  }
+  &,
+  &[type] {
+    padding: .5em 1em .4em;
+  }
+  &:hover {
+    color: white !important;
+    text-decoration: none !important;
+    background: $light_red;
+  }
+  &.disabled,
+  &[disabled] {
+    cursor: default !important;
+    color: $light_pale_red;
+    background: $pale_red;
+  }
+  &[type=reset],
+  &[type=button],
+  &[type=submit] {
+    font-family: inherit;
+    border: 0 none;
+    margin: 0;
+  }
+  /** active/pressed **/
+  &:active,
+  &.pressed {
+    & {
+      background: $dark_red;
+    }
+    &.large {
+      @include box-shadow( inset 0 -4px 0 0 $red );
+    }
+    &.medium {
+      @include box-shadow( inset 0 -3px 0 0 $red );
+    }
+  }
+  
+  /**
+   * Grey
+   */
+  &.grey,
+  &.gray {
+    & {
+      background: #eee;
+      color: #555 !important;
+    }
+    &:hover {
+      background: #ddd;
+      color: #555 !important;
+    }
+    &.disabled,
+    &[disabled] {
+      color: #bbb !important;
+      background: #eee !important;
+    }
+    &.large {
+      & {
+        @include box-shadow( none );
+      }
+      &.disabled,
+      &[disabled] {
+        @include box-shadow( none );
+      }
+    }
+    &.medium {
+      & {
+        @include box-shadow( none );
+      }
+      &.medium.disabled,
+      &.medium[disabled] {
+        @include box-shadow( none );
+      }
+    }
+    /** active/pressed **/
+    &:active,
+    &.pressed {
+      & {
+        background: #333;
+        color: white !important;
+      }
+      &.large {
+        @include box-shadow( none );
+      }
+      &.medium {
+        @include box-shadow( none );
+      }
+    }
+  }
+  
+  /**
+   * Blue
+   */
+  &.blue {
+    & {
+      background: $blue;
+    }
+    &:hover {
+      background: $light_blue;
+    }
+    &.disabled,
+    &[disabled] {
+      color: $light_pale_blue !important;
+      background: $dark_blue !important;
+    }
+    &.large {
+      & {
+        @include box-shadow( inset 0 -4px 0 0 $dark_blue );
+      }
+      &.disabled,
+      &[disabled] {
+        @include box-shadow( inset 0 -4px 0 0 $light_pale_blue );
+      }
+    }
+    &.medium {
+      & {
+        @include box-shadow( inset 0 -3px 0 0 $dark_blue );
+      }
+      &.medium.disabled,
+      &.medium[disabled] {
+        @include box-shadow( inset 0 -3px 0 0 $light_pale_blue );
+      }
+    }
+    /** active/pressed **/
+    &:active,
+    &.pressed {
+      & {
+        background: $dark_blue;
+      }
+      &.large {
+        @include box-shadow( 0px 1px 1px 1px rgba(255,255,255,.5), inset 0 4px 1px 0 $dim_blue );
+      }
+      &.medium {
+        @include box-shadow( 0px 1px 1px 1px rgba(255,255,255,.5), inset 0 3px 1px 0 $dim_blue );
+      }
+    }
+  }
+
+  /**
+   * gray
+   */
+  &.gray {
+    & {
+      background: $light_gray;
+    }
+    &:hover {
+      background: $gray;
+    }
+    &.disabled,
+    &[disabled] {
+      color: $gray !important;
+      background: $light_gray !important;
+    }
+    &.large {
+      & {
+        @include box-shadow( inset 0 -4px 0 0 $gray );
+      }
+      &.disabled,
+      &[disabled] {
+        @include box-shadow( inset 0 -4px 0 0 $gray );
+      }
+    }
+    &.medium {
+      & {
+        @include box-shadow( inset 0 -3px 0 0 $gray );
+      }
+      &.medium.disabled,
+      &.medium[disabled] {
+        @include box-shadow( inset 0 -3px 0 0 $gray );
+      }
+    }
+    /** active/pressed **/
+    &:active,
+    &.pressed {
+      & {
+        background: $dark_gray;
+      }
+      &.large {
+        @include box-shadow( 0px 1px 1px 1px rgba(255,255,255,.5), inset 0 4px 1px 0 $gray );
+      }
+      &.medium {
+        @include box-shadow( 0px 1px 1px 1px rgba(255,255,255,.5), inset 0 3px 1px 0 $gray );
+      }
+    }
+  }
+  /**Header Red **/
+    &.header-red {
+    & {
+      background: $header_red;
+       @include box-shadow( inset 0 -4px 0 0 $dark_header_red );
+       padding-top:.5em;
+       padding-bottom:.8em;
+    }
+    &:hover {
+      background: lighten($header_red, 3%);
+    }
+    /** active/pressed **/
+    &:active,
+    &.pressed {
+      & {
+        background: lighten($header_red, 3%);
+        @include box-shadow(inset 0 4px 1px 0 $dark_header_red );
+      }
+    }
+  }
+  /** Large **/
+  &.large {
+    & {
+      font-size: 15px;
+      padding: 9px 22px 11px;
+      @include box-sizing( border-box );
+      @include box-shadow( inset 0 -4px 0 0 $dark_red );
+      @include border-radius( 4px );
+    }
+    &.disabled,
+    &[disabled] {
+      @include box-shadow( inset 0 -4px 0 0 $light_pale_red );
+    }
+    &:active,
+    &.pressed {
+      @include box-shadow(inset 0 4px 1px 0 $dim_red );
+      padding: 11px 22px 9px;
+    }
+  }
+ 
+  /**
+   * Medium
+   */
+  &.medium {
+    & {
+      font-size: 13.2px;
+      padding: 8px 16px 9px;
+      @include box-sizing( border-box );
+      @include box-shadow( inset 0 -3px 0 0 $dark_red );
+    }
+    &.disabled,
+    &[disabled] {
+      @include box-shadow( inset 0 -3px 0 0 $light_pale_red );
+    }
+    &:active,
+    &.pressed {
+      @include box-shadow( 0px 1px 1px 1px rgba(255,255,255,.5), inset 0 3px 1px 0 $dim_red );
+      padding: 9px 16px 8px;
+    }
+  }
+  
+  /**
+   * Small
+   */
+  &.small {
+    & {
+      font-size: 12px;
+      padding: .4em .5em .3em;
+    }
+  }
+
+}
