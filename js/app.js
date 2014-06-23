@@ -21,9 +21,9 @@ cacularApp.controller('inputController',function($scope,$rootScope){
   	function resetForm(){
   		$scope.submitted = false;
   		$scope.input = {
-  			// meal_price:0,
-  			// tax_rate:0,
-  			// tip_percent:0
+  			meal_price:0,
+  			tax_rate:0,
+  			tip_percent:0
   		};
   	}
 })
