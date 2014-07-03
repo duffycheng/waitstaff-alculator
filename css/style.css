@@ -161,7 +161,7 @@ figure {
 }
 
 fieldset {
-  border: 1px solid #c0c0c0;
+  border: 1px solid silver;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
@@ -347,7 +347,7 @@ table {
   zoom: 1;
 }
 .button, .button[type] {
-  padding: .5em 1em .4em;
+  padding: 0.5em 1em 0.4em;
 }
 .button:hover {
   color: white !important;
@@ -382,15 +382,15 @@ table {
 }
 .button.grey, .button.gray {
   background: #eee;
-  color: #555 !important;
+  color: #555555 !important;
 }
 .button.grey:hover, .button.gray:hover {
   background: #ddd;
-  color: #555 !important;
+  color: #555555 !important;
 }
 .button.grey.disabled, .button.grey[disabled], .button.gray.disabled, .button.gray[disabled] {
-  color: #bbb !important;
-  background: #eee !important;
+  color: #bbbbbb !important;
+  background: #eeeeee !important;
 }
 .button.grey.large, .button.gray.large {
   -webkit-box-shadow: none;
@@ -588,7 +588,7 @@ table {
 }
 .button.small {
   font-size: 12px;
-  padding: .4em .5em .3em;
+  padding: 0.4em 0.5em 0.3em;
 }
 
 html, body {
@@ -599,7 +599,66 @@ h1 {
   text-align: center;
   color: #e7e7e7;
   font-weight: bold;
-  text-shadow: 1px 1px #000;
+  text-shadow: 1px 1px black;
+}
+
+nav {
+  background-color: #FFF;
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5), -1px -1px 1px 1px rgba(255, 255, 255, 0.3);
+}
+nav {
+  zoom: 1;
+}
+nav:after {
+  content: ".";
+  display: block;
+  clear: both;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5em 0;
+}
+nav li {
+  display: inline-block;
+}
+nav li a {
+  color: #0077b1;
+}
+nav li a.active {
+  color: #be252c;
+  text-decoration: none;
+}
+
+.view-container {
+  position: relative;
+}
+.view-container > div {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -300px;
+  overflow: hidden;
+}
+
+.container.ng-enter {
+  transition: 0.5s ease-out all;
+}
+
+.container.ng-enter {
+  opacity: 0;
+  height: 0;
+}
+
+.container.ng-enter.ng-enter-active {
+  opacity: 1;
+  height: 500px;
 }
 
 .warning {
@@ -611,17 +670,20 @@ h1 {
   margin: 0 0 0 10px;
 }
 
-.content {
+.block {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  width: 1000px;
-  margin: 0 auto;
+  width: 600px;
+  margin: 20px auto;
+  background-color: #FFF;
+  padding: 20px;
+  box-shadow: 1px 1px 2px 0 black;
 }
-.content {
+.block {
   zoom: 1;
 }
-.content:after {
+.block:after {
   content: ".";
   display: block;
   clear: both;
@@ -629,63 +691,51 @@ h1 {
   overflow: hidden;
   visibility: hidden;
 }
-.content .left, .content .right {
-  width: 48%;
-  margin: 0 1%;
-  float: left;
-  background: #FFF;
-}
-.content .left h2, .content .right h2 {
+.block h2 {
   text-align: center;
   margin: 0 0 20px 0;
   padding-bottom: 10px;
   border-bottom: 1px solid #cccccc;
 }
-.content .left .block, .content .right .block {
-  background: #FFF;
-  padding: 20px 0;
-  box-shadow: 1px 1px 2px 0 #000;
+.block form > div {
+  margin: 10px auto;
+  width: 500px;
 }
-.content .left form > div {
-  margin: 10px 20px;
-}
-.content .left form > div label {
+.block form > div label {
   display: inline-block;
   width: 200px;
   text-align: right;
 }
-.content .left form > div input[type=number] {
+.block form > div input[type=number] {
   width: 50px;
 }
-.content .left form > div:first-child input[type=number] {
+.block form > div:first-child input[type=number] {
   width: 120px;
 }
-.content .left .actions {
+.block .actions {
   text-align: center;
-  padding: 117px 0 10px;
+  padding: 20px 10px 0;
 }
-.content .right {
-  background-color: #777777;
-}
-.content .right .block {
-  margin: 0 0 10px;
-}
-.content .right .block .item {
+.block .item {
   margin: 10px 20px;
 }
-.content .right .block .customer-result .item:last-child {
-  border-top: 2px #000 solid;
+.block .customer-result .item:last-child {
+  border-top: 2px black solid;
   padding-top: 5px;
 }
-.content .right .subtitle {
+.block .subtitle {
   display: inline-block;
   width: 220px;
   margin-right: 10px;
   text-align: right;
 }
+.block .customer-result, .block .waiter-result {
+  width: 500px;
+  margin: 0 auto;
+}
 
 .reset-action {
-  width: 1000px;
+  width: 600px;
   margin: 0 auto;
   text-align: right;
   padding: 10px 10px 0 0;

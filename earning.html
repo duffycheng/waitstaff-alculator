@@ -1,0 +1,23 @@
+
+<section class="block">
+	<header>
+		<h2>My Earnings Info</h2>
+	</header>
+	<div class="waiter-result" ng-controller="earnController">
+		<div class="item">
+			<span class="subtitle">Tip Total:</span>
+			<sapn class="result">{{earn.tip_total | number:2 | currency}}</sapn>
+		</div>
+		<div class="item">
+			<span class="subtitle">Meal count:</span>
+			<sapn class="result">{{earn.meal_count}}</sapn>
+		</div>
+		<div class="item">
+			<span class="subtitle">Average Tip Per Meal:</span>
+			<sapn class="result">{{earn.average_tip | number:2 | currency}}</sapn>
+		</div>
+	</div>
+</section>
+<div class="reset-action" ng-controller="resetController">
+			<a href="" class="button large" ng-click="reset()">Reset</a>
+		</div>

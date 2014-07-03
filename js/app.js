@@ -1,5 +1,67 @@
-var cacularApp = angular.module("cacularApp",[]);
-cacularApp.controller('inputController',function($scope,$rootScope){
+var cacularApp = angular.module("cacularApp",['ngRoute','ngAnimate']);
+
+cacularApp.config(function($routeProvider){
+	$routeProvider
+	.when("/",{
+            templateUrl : './home.html',
+            controller : ''
+        })
+	.when("/new-meal",{
+            templateUrl : './new-meal.html',
+            controller : 'inputController'
+        })
+	.when("/earning",{
+            templateUrl : './earning.html',
+            controller : 'earnController'
+    }).otherwise({
+    	redirectTo :"/"
+    });
+}).run(function($rootScope, $location, $timeout) {
+        $rootScope.$on('$routeChangeError', function() {
+            $location.path("/");
+        });
+        $rootScope.$on('$routeChangeStart', function() {
+            $rootScope.isLoading = true;
+        });
+        $rootScope.$on('$routeChangeSuccess', function() {
+          $timeout(function() {
+            $rootScope.isLoading = false;
+          }, 1000);
+        });
+    });
+
+cacularApp.controller('panelController',function($scope,$rootScope,$location){
+	//menu select
+	var path = $location.path();
+	if(path === "/new-meal"){
+		this.tab =2;
+	}else if(path === "/earning"){
+		this.tab = 3;
+	}else{
+		this.tab = 1;
+	}
+
+	this.changeTab = function(tabNum){
+		this.tab = tabNum;
+	}
+
+	this.acitvieTab = function(tabNum){
+			return this.tab === tabNum;
+	}
+
+	//work as a parent scope to deliver data between 'new meal' and 'earning' pages
+	$scope.earn={
+		tip_total:0.00,
+		meal_count:0,
+		average_tip:0.00
+	}
+	$scope.$on("tip_result",function(event,data){
+		$scope.earn.tip_total += data.tip;
+		$scope.earn.meal_count += 1;
+		$scope.earn.average_tip += $scope.earn.tip_total / $scope.earn.meal_count;
+	});
+})
+.controller('inputController',function($scope,$rootScope){
 	$scope.submit = function() {
 		$scope.submitted = true;
 		//only broadcast event when form is valid
@@ -53,16 +115,6 @@ cacularApp.controller('inputController',function($scope,$rootScope){
 	}
 })
 .controller("earnController",function($scope){
-	$scope.earn={
-		tip_total:0.00,
-		meal_count:0,
-		average_tip:0.00
-	}
-	$scope.$on("tip_result",function(event,data){
-		$scope.earn.tip_total += data.tip;
-		$scope.earn.meal_count += 1;
-		$scope.earn.average_tip += $scope.earn.tip_total / $scope.earn.meal_count;
-	});
 	$scope.$on("reset",function(){
 		$scope.earn={
 		tip_total:0,
@@ -73,7 +125,6 @@ cacularApp.controller('inputController',function($scope,$rootScope){
 })
 .controller("resetController",function($scope,$rootScope){
 	$scope.reset=function(){
-		console.log("reset");
 		$rootScope.$broadcast("reset");
 	};
 });
