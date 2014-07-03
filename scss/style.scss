@@ -38,6 +38,23 @@ nav{
 
   }
 }
+.view-container{
+  position: relative;
+  &>div{
+    position:absolute;
+    top:0;
+    left:50%;
+    margin-left:-300px;
+    // max-height:500px; 
+    overflow: hidden;
+  }
+}
+.container.ng-enter{
+  transition:.5s ease-out all;
+}
+.container.ng-enter { opacity:0;height:0; }
+.container.ng-enter.ng-enter-active { opacity:1;height:500px; }
+
 .warning{
   color:$red;
   display: inline-block;

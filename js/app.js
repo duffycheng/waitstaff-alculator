@@ -1,4 +1,4 @@
-var cacularApp = angular.module("cacularApp",['ngRoute']);
+var cacularApp = angular.module("cacularApp",['ngRoute','ngAnimate']);
 
 cacularApp.config(function($routeProvider){
 	$routeProvider
@@ -16,7 +16,19 @@ cacularApp.config(function($routeProvider){
     }).otherwise({
     	redirectTo :"/"
     });
-});
+}).run(function($rootScope, $location, $timeout) {
+        $rootScope.$on('$routeChangeError', function() {
+            $location.path("/");
+        });
+        $rootScope.$on('$routeChangeStart', function() {
+            $rootScope.isLoading = true;
+        });
+        $rootScope.$on('$routeChangeSuccess', function() {
+          $timeout(function() {
+            $rootScope.isLoading = false;
+          }, 1000);
+        });
+    });
 
 cacularApp.controller('panelController',function($scope,$rootScope,$location){
 	//menu select

@@ -161,7 +161,7 @@ figure {
 }
 
 fieldset {
-  border: 1px solid #c0c0c0;
+  border: 1px solid silver;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em;
 }
@@ -347,7 +347,7 @@ table {
   zoom: 1;
 }
 .button, .button[type] {
-  padding: .5em 1em .4em;
+  padding: 0.5em 1em 0.4em;
 }
 .button:hover {
   color: white !important;
@@ -382,15 +382,15 @@ table {
 }
 .button.grey, .button.gray {
   background: #eee;
-  color: #555 !important;
+  color: #555555 !important;
 }
 .button.grey:hover, .button.gray:hover {
   background: #ddd;
-  color: #555 !important;
+  color: #555555 !important;
 }
 .button.grey.disabled, .button.grey[disabled], .button.gray.disabled, .button.gray[disabled] {
-  color: #bbb !important;
-  background: #eee !important;
+  color: #bbbbbb !important;
+  background: #eeeeee !important;
 }
 .button.grey.large, .button.gray.large {
   -webkit-box-shadow: none;
@@ -588,7 +588,7 @@ table {
 }
 .button.small {
   font-size: 12px;
-  padding: .4em .5em .3em;
+  padding: 0.4em 0.5em 0.3em;
 }
 
 html, body {
@@ -599,7 +599,7 @@ h1 {
   text-align: center;
   color: #e7e7e7;
   font-weight: bold;
-  text-shadow: 1px 1px #000;
+  text-shadow: 1px 1px black;
 }
 
 nav {
@@ -623,7 +623,7 @@ nav:after {
 nav ul {
   list-style: none;
   margin: 0;
-  padding: .5em 0;
+  padding: 0.5em 0;
 }
 nav li {
   display: inline-block;
@@ -634,6 +634,31 @@ nav li a {
 nav li a.active {
   color: #be252c;
   text-decoration: none;
+}
+
+.view-container {
+  position: relative;
+}
+.view-container > div {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -300px;
+  overflow: hidden;
+}
+
+.container.ng-enter {
+  transition: 0.5s ease-out all;
+}
+
+.container.ng-enter {
+  opacity: 0;
+  height: 0;
+}
+
+.container.ng-enter.ng-enter-active {
+  opacity: 1;
+  height: 500px;
 }
 
 .warning {
@@ -653,7 +678,7 @@ nav li a.active {
   margin: 20px auto;
   background-color: #FFF;
   padding: 20px;
-  box-shadow: 1px 1px 2px 0 #000;
+  box-shadow: 1px 1px 2px 0 black;
 }
 .block {
   zoom: 1;
@@ -695,7 +720,7 @@ nav li a.active {
   margin: 10px 20px;
 }
 .block .customer-result .item:last-child {
-  border-top: 2px #000 solid;
+  border-top: 2px black solid;
   padding-top: 5px;
 }
 .block .subtitle {
