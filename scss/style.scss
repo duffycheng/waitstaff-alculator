@@ -13,6 +13,31 @@ h1{
   font-weight: bold;
   text-shadow: 1px 1px #000;
 }
+nav{
+  background-color:#FFF;
+  width:500px;
+    margin:0 auto;
+    text-align: center;
+    box-shadow:1px 1px 1px 1px rgba(0,0,0,.5),-1px -1px 1px 1px rgba(255,255,255,.3);
+  @include clearfix;
+  ul{
+    list-style: none;
+    margin:0;
+    padding:.5em 0;
+  }
+  li{
+    // float:left;
+    display: inline-block;
+    a{
+      color:$link;
+      &.active{
+        color:$red;
+        text-decoration: none;
+      }
+    }
+
+  }
+}
 .warning{
   color:$red;
   display: inline-block;
@@ -22,31 +47,25 @@ h1{
   vertical-align: top;
   margin:0 0 0 10px;
 }
-.content{
+.block{
   @include box-sizing(border-box);
   @include clearfix;
-  width:1000px;
-  margin:0 auto;
-  .left,.right{
-    width:48%;
-    margin:0 1%;
-    float:left;
-    background:#FFF;
+  width:600px;
+  margin:20px auto;
+  background-color:#FFF;
+  padding:20px;
+  box-shadow:1px 1px 2px 0 #000;
     h2{
       text-align:center;
       margin:0 0 20px 0;
       padding-bottom:10px;
       border-bottom:1px solid $gray;
     }
-    .block{
-      background:#FFF;
-      padding:20px 0;
-      box-shadow:1px 1px 2px 0 #000;
-    }
-  }
-  .left{
+  
+  
     form>div{
-      margin:10px 20px;
+      margin:10px auto;
+      width:500px;
       label{
         display: inline-block;
         width:200px;
@@ -62,13 +81,9 @@ h1{
     }
     .actions{
       text-align: center;
-      padding:117px 0 10px;
+      padding:20px 10px 0;
     }
-  }
-  .right{
-    background-color:$dark_gray;
-    .block{
-      margin:0 0 10px;
+
       .item{
         margin:10px 20px;
       }
@@ -79,17 +94,20 @@ h1{
 
         }
       }
-    }
     .subtitle{
       display: inline-block;
         width:220px;
         margin-right:10px;
         text-align: right;
     }
+    .customer-result,.waiter-result{
+      width:500px;
+      margin:0 auto;
+    }
   }
-}
+
 .reset-action{
-  width:1000px;
+  width:600px;
   margin:0 auto;
   text-align: right;
   padding:10px 10px 0 0;

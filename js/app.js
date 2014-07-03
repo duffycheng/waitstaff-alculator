@@ -1,5 +1,27 @@
-var cacularApp = angular.module("cacularApp",[]);
-cacularApp.controller('inputController',function($scope,$rootScope){
+var cacularApp = angular.module("cacularApp",['ngRoute']);
+
+cacularApp.config(function($routeProvider){
+	$routeProvider
+	.when("/",{
+            templateUrl : './home.html',
+            controller : ''
+        })
+	.when("/new-meal",{
+            templateUrl : './new-meal.html',
+            controller : 'inputController'
+        })
+	.when("/earning",{
+            templateUrl : './earning.html',
+            controller : 'earnController'
+    }).otherwise({
+    	redirectTo :"/"
+    });
+});
+
+cacularApp.controller('panelController',function($scope,$rootScope){
+
+})
+.controller('inputController',function($scope,$rootScope){
 	$scope.submit = function() {
 		$scope.submitted = true;
 		//only broadcast event when form is valid

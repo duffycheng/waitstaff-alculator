@@ -1,0 +1,45 @@
+<section class="block">
+		<header>
+			<h2>Enter the meal Details</h2>
+		</header>
+		<form  name="inputForm" ng-controller="inputController" ng-submit="submit()" novalidate>
+			<div>
+				<label for="meal_price" required>Base Meal Price: $</label>
+				<input type="number" name="meal_price" id="meal_price" ng-model="input.meal_price" min="1" required>
+				<p class="warning" ng-if="submitted && inputForm.meal_price.$invalid">Enter a positive number</p>
+			</div>
+			<div>
+				<label for="taxt_rate" required>Tax Rate: %</label>
+				<input type="number" name="tax_rate" id="tax_rate" ng-model="input.tax_rate" min="1" max="50" required>
+				<p class="warning" ng-if="submitted && inputForm.tax_rate.$invalid">Enter a positive number</p>
+			</div>
+			<div>
+				<label for="tip_percent" required>Tip Percentage: %</label>
+				<input type="number" name="tip_percent" id="tip_percent" ng-model="input.tip_percent" min="1" max="50" required>
+				<p class="warning" ng-if="submitted && inputForm.tip_percent.$invalid">Enter a positive number</p>
+			</div>
+			<div class="actions">
+				<input type="submit" name="submit" class="button large" value="Submit">
+				<a href="" class="button gray large" ng-click="cancel()">Cancel</a>
+			</div>
+		</form>
+</section>
+<section class="block">
+	<header>
+		<h2>Customer Charges</h2>
+	</header>
+	<div class="customer-result" ng-controller="customerController">
+		<div class="item">
+			<span class="subtitle">Subtotal:</span>
+			<sapn class="result">{{customer.subtotal | number:2 | currency }}</sapn>
+		</div>
+		<div class="item">
+			<span class="subtitle">Tip:</span>
+			<sapn class="result">{{customer.tip | number:2 | currency}}</sapn>
+		</div>
+		<div class="item">
+			<span class="subtitle">Total:</span>
+			<sapn class="result">{{customer.total | number:2 | currency}}</sapn>
+		</div>
+	</div>
+</section>
